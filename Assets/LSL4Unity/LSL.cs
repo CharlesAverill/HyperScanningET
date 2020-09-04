@@ -1,4 +1,4 @@
-# define LSL4UnityLibrary
+#define LSL4UnityLibrary
 using System;
 using System.Runtime.InteropServices;
 using System.Collections;

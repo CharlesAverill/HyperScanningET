@@ -41,6 +41,8 @@ namespace Assets.LSL4Unity.Scripts
         public void Write(string marker)
         {
             sample[0] = marker;
+            lslOutlet.push_sample(sample);
+            Debug.Log(lslOutlet);
         }
 
         public void Write(string marker, double customTimeStamp)
@@ -69,5 +71,18 @@ namespace Assets.LSL4Unity.Scripts
             yield return null;
         }
 
+        void Update(){
+          if(lslOutlet == null){
+            lslStreamInfo = new liblsl.StreamInfo(
+                                        lslStreamName,
+                                        lslStreamType,
+                                        lslChannelCount,
+                                        nominal_srate,
+                                        lslChannelFormat,
+                                        unique_source_id);
+
+            lslOutlet = new liblsl.StreamOutlet(lslStreamInfo);
+          }
+        }
     }
 }
