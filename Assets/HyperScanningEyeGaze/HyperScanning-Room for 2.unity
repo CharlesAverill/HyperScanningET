@@ -1020,6 +1020,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7804056244390871292, guid: fa076f08d11252d4c9652cae8674d04c,
+        type: 3}
+      propertyPath: avertEyes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7914879701705843490, guid: fa076f08d11252d4c9652cae8674d04c,
         type: 3}
       propertyPath: m_LocalPosition.x

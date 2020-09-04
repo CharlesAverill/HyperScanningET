@@ -14,6 +14,8 @@ namespace Photon.Pun.Demo.PunBasics
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
 
+        public bool avertEyes;
+
         [Header("Eye Transforms")]
         [SerializeField]
         private Transform _leftEye;
@@ -135,12 +137,18 @@ namespace Photon.Pun.Demo.PunBasics
             _previousSmoothedDirectionL = smoothedDirectionLeftEye;
             _previousSmoothedDirectionR = smoothedDirectionRightEye;
 
-            // Rotate the eye transforms to match the eye direction.
-            var leftRotation = Quaternion.LookRotation(smoothedDirectionLeftEye);
-            var rightRotation = Quaternion.LookRotation(smoothedDirectionRightEye);
+            if(!avertEyes){
+              // Rotate the eye transforms to match the eye direction.
+              var leftRotation = Quaternion.LookRotation(smoothedDirectionLeftEye);
+              var rightRotation = Quaternion.LookRotation(smoothedDirectionRightEye);
 
-            _leftEye.rotation = leftRotation;
-            _rightEye.rotation = rightRotation;
+              _leftEye.rotation = leftRotation;
+              _rightEye.rotation = rightRotation;
+            }
+            else{
+              _leftEye.localEulerAngles = new Vector3(-16, -21, 0);
+              _rightEye.localEulerAngles = new Vector3(-16, -21, 0);
+            }
         }
 
         public void ProcessInputs()

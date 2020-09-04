@@ -746,6 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabe43678b49c8440b9e23698dc564f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avertEyes: 1
   _leftEye: {fileID: 7914553014354572448}
   _rightEye: {fileID: 7911114282192009770}
   _crossEyeCorrection: -4.5
