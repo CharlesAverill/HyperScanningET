@@ -6,6 +6,7 @@ using Assets.LSL4Unity.Scripts;
 public class MarkerGenerator : MonoBehaviour
 {
 
+    public float secondsBetweenMarkers = 1f;
     private LSLMarkerStream marker;
     private int markerIndex;
 
@@ -14,7 +15,7 @@ public class MarkerGenerator : MonoBehaviour
     {
       marker = FindObjectOfType<LSLMarkerStream>();
       markerIndex = 0;
-      InvokeRepeating("sendMarker", 0f, 1f);
+      InvokeRepeating("sendMarker", 0f, secondsBetweenMarkers);
     }
 
     // Update is called once per frame
@@ -26,5 +27,6 @@ public class MarkerGenerator : MonoBehaviour
     void sendMarker(){
       markerIndex += 1;
       marker.Write("Marker " + markerIndex);
+      Debug.Log("Marker " + markerIndex + " successful");
     }
 }
