@@ -15,18 +15,31 @@ public class MarkerGenerator : MonoBehaviour
     {
       marker = FindObjectOfType<LSLMarkerStream>();
       markerIndex = 0;
-      InvokeRepeating("sendMarker", 0f, secondsBetweenMarkers);
+      //InvokeRepeating("sendMarker", 0f, secondsBetweenMarkers);
     }
+
+    IEnumerator sendMarkerEnum(){
+      while(true){
+        yield return new WaitForSeconds(secondsBetweenMarkers);
+        sendMarker();
+      }
+    }
+
+    private bool startMarkerEnum = true;
 
     // Update is called once per frame
     void Update()
     {
-
+      if(startMarkerEnum){
+        //Only doing this because InvokeRepeating wasn't working on Windows
+        startMarkerEnum = false;
+        StartCoroutine(sendMarkerEnum());
+      }
     }
 
     void sendMarker(){
+      Debug.Log("Writing marker " + (markerIndex + 1));
       markerIndex += 1;
       marker.Write("Marker " + markerIndex);
-      Debug.Log("Marker " + markerIndex + " successful");
     }
 }
